@@ -1,0 +1,38 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 500MB
+  jackson:
+    serialization:
+      indent_output: true
+      fail_on_empty_beans: false
+      write_dates_as_timestamps: true
+    deserialization:
+      fail_on_unknown_properties: false
+      accept_empty_string_as_null_object: true
+    defaultPropertyInclusion: NON_NULL
+    parser:
+      allow_unquoted_control_chars: true
+      allow_single_quotes: true
+  main:
+    allow-bean-definition-overriding: true
+  http:
+    encoding:
+      force-response: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      sensitive: false
+  endpoint:
+    health:
+      show-details: never
+server:
+  undertow:
+    buffer-size: 1024
+    direct-buffers: true
+    io-threads: 16
+    worker-threads: 256

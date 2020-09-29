@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: scn
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        group: DEFAULT_GROUP
+        server-addr: ${spring.cloud.nacos.server-addr}
+        service: ${spring.application.name}
+
+      config:
+        server-addr: ${spring.cloud.nacos.server-addr}
+        file-extension: yaml
+        group: DEFAULT_GROUP
+        extension-configs:
+          - data-id: sleuth_config.yml
+            group: COMMON_GROUP
+            refresh: true
+          - data-id: spring_config.yml
+            group: COMMON_GROUP
+            refresh: true
+          - data-id: redis_config.yml
+            group: COMMON_GROUP
+            refresh: true
+          - data-id: mybatis_plus_config.yml
+            group: COMMON_GROUP
+            refresh: true
+          - data-id: elastic_job_config.yml
+            group: COMMON_GROUP
+            refresh: true
+        namespace: 639fd2f9-eb2a-4cfd-acaf-92d39ab5a74f
+  main:
+    allow-bean-definition-overriding: true

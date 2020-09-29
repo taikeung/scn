@@ -1,0 +1,10 @@
+spring:
+  redis:
+    lettuce:
+      max-active: 8
+      max-idle: 8
+      min-idel: 0
+    host: 127.0.0.1
+    password: test
+    port: 6379
+    database: 0

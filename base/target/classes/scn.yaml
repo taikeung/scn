@@ -1,0 +1,22 @@
+# 在nacos上配置的时候不需要后缀.yaml
+spring:
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3306/scn?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&serverTimezone=Asia/Shanghai&verifyServerCertificate=false&useSSL=true
+        driver-class-name: com.mysql.jdbc.Driver
+        username: scn
+        password: scn
+        hikari:
+            auto-commit: true
+            minimum-idle: 10
+            maximum-pool-size: 20
+            idle-timeout: 30000
+            connection-timeout: 30000
+            connection-test-query: select 1
+    flyway:
+        url: ${spring.datasource.url}
+        password: ${spring.datasource.password}
+        user: ${spring.datasource.username}
+mybatis-plus:
+    type-aliases-package: com.photon.acquire.auth.repo.entity
+server:
+    port: 8080
